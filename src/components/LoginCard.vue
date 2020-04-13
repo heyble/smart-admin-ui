@@ -99,6 +99,9 @@ export default {
           }).then(res => {
             // console.log(res.data)
             localStorage.setItem('Authorization', res.data.data)
+            this.$store.dispatch('loadCurrentUserAction')
+            var redirect = this.$route.query.redirect
+            this.$router.push(redirect == null ? '/admin' : redirect)
           })
         } else {
           // console.log('error submit!!')

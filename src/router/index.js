@@ -7,12 +7,16 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/admin',
     component: Admin
   },
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/',
+    redirect: '/admin'
   }
   // {
   //   path: '/about',
@@ -42,9 +46,11 @@ router.beforeEach((to, from, next) => {
       // 判断用户是否登录
       if (Object.keys(from.query).length === 0) {
         // 判断路由来源是否有query，处理不是目的跳转的情况
+        console.log('Object.keys(from.query).length:' + Object.keys(from.query).length)
         next()
       } else {
         const redirect = from.query.redirect // 如果来源路由有query
+        console.log(to.path + ':' + redirect)
         if (to.path === redirect) {
           // 这行是解决next无限循环的问题
           next()
@@ -53,9 +59,11 @@ router.beforeEach((to, from, next) => {
         }
       }
     } else {
+      console.log('to.path:' + to.path)
       if (to.path === '/login') {
         next()
       } else {
+        console.log('to.fullPath:' + to.fullPath)
         next({
           path: '/login',
           query: { redirect: to.fullPath } // 将目的路由地址存入login的query中

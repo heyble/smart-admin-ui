@@ -7,6 +7,13 @@ module.exports = {
         pathRewrite: {
           '^/login': '/login'
         }
+      },
+      '/user': {
+        target: 'http://127.0.0.1:3000/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/user': '/user'
+        }
       }
     }
   }

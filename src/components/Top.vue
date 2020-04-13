@@ -4,13 +4,16 @@
     <div class="right">
       <div class="r-left">smart</div>
       <div class="r-right">
-        <el-dropdown placement="bottom">
+        <el-dropdown placement="bottom" @split-button="true">
           <span class="el-dropdown-link">
-            <el-avatar :size="50" :src="circleUrl"></el-avatar>
+            <el-avatar
+              :size="50"
+              :src="currentUser.avatar == '' ? 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png' : currentUser.avatar"
+            ></el-avatar>
           </span>
-          <el-dropdown-menu slot="dropdown">
+          <el-dropdown-menu slot="dropdown"  >
             <el-dropdown-item icon="el-icon-plus">个人中心</el-dropdown-item>
-            <el-dropdown-item icon="el-icon-circle-plus">退出登录</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-circle-plus" @click.native="logout">退出登录</el-dropdown-item>
             <el-dropdown-item icon="el-icon-circle-plus-outline">螺蛳粉</el-dropdown-item>
             <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
             <el-dropdown-item icon="el-icon-circle-check">蚵仔煎</el-dropdown-item>
@@ -27,14 +30,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
-      circleUrl:
-        'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+      // circleUrl: currentUser.avatar == '' ? 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png' : currentUser.avatar
     }
   },
-  mounted() {}
+  mounted() {},
+  methods: {
+    logout() {
+      console.log('logout')
+      localStorage.clear('Authorization')
+      this.$router.push('/login')
+    }
+  },
+  computed: {
+    ...mapState(['currentUser'])
+  }
 }
 </script>
 
