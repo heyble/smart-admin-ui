@@ -13,6 +13,7 @@ new Vue({
 }).$mount('#app')
 
 axios.interceptors.request.use(config => {
+  console.log('axios interceptor')
   config.headers.Authorization = localStorage.getItem('Authorization')
   return config
 },

@@ -10,13 +10,14 @@ export default new Vuex.Store({
   },
   mutations: {
     commitCurrentUser(state, user) {
+      sessionStorage.setItem('currentUser', JSON.stringify(user))
       state.currentUser = user
     }
   },
   actions: {
     loadCurrentUserAction(Store) {
       axios.get('/user/current').then(res => {
-        Store.commit('commitCurrentUser', res.data)
+        Store.commit('commitCurrentUser', res.data.data)
       })
     }
   },

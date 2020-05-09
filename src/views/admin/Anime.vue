@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-container>
+    anime
+    <!-- <el-container>
       <el-header style="height: 100px;padding: 0">
         <top></top>
       </el-header>
@@ -9,30 +10,28 @@
           <slidebar></slidebar>
         </el-aside>
         <el-main>
-          <router-view></router-view>
+          <center>
+              film admin
+          </center>
         </el-main>
       </el-container>
-    </el-container>
+    </el-container>-->
   </div>
 </template>
 
 <script>
-import slidebar from '@/components/Slidebar'
-import top from '@/components/Top'
+// import slidebar from '@/components/Slidebar'
+// import top from '@/components/Top'
 // import center from '@/components/Center'
 export default {
   components: {
-    slidebar,
-    top
+    // slidebar,
+    // top,
     // center
+  },
+  mounted() {
+    console.log('film admin')
   }
-  // beforeRouteEnter(to, from, next) {
-  //   var token = localStorage.getItem('Authenction')
-  //   console.log(token == null)
-  //   if (token == null) {
-  //     next('/login')
-  //   }
-  // }
 }
 </script>
 

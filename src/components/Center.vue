@@ -1,5 +1,7 @@
 <template>
-  <div>main</div>
+  <div>
+    <slot>center</slot>
+  </div>
 </template>
 
 <style lang="scss" scoped>

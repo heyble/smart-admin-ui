@@ -3,6 +3,7 @@
     <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
+      :router="true"
       @open="handleOpen"
       @close="handleClose"
       background-color="#545c64"
@@ -27,14 +28,32 @@
           <el-menu-item index="1-4-1">选项1</el-menu-item>
         </el-submenu>
       </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
+
+      <el-submenu index="2">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <span>资源管理</span>
+        </template>
+        <el-menu-item-group>
+          <template slot="title">视频</template>
+          <el-menu-item index="film">电影</el-menu-item>
+          <el-menu-item index="tvplay">电视剧</el-menu-item>
+          <el-menu-item index="anime">动漫</el-menu-item>
+        </el-menu-item-group>
+        <el-menu-item-group title="音频">
+          <el-menu-item index="2-3">选项3</el-menu-item>
+        </el-menu-item-group>
+        <el-submenu index="2-4">
+          <template slot="title">选项4</template>
+          <el-menu-item index="2-4-1">选项1</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+
       <el-menu-item index="3" disabled>
         <i class="el-icon-document"></i>
         <span slot="title">导航三</span>
       </el-menu-item>
+
       <el-menu-item index="4">
         <i class="el-icon-setting"></i>
         <span slot="title">导航四</span>

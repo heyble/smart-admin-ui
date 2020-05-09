@@ -1,6 +1,8 @@
 <template>
   <div class="top">
-    <div class="left">LOGO</div>
+    <div class="left">
+      <router-link to="/" tag="div">LOGO</router-link>
+    </div>
     <div class="right">
       <div class="r-left">smart</div>
       <div class="r-right">
@@ -11,8 +13,10 @@
               :src="currentUser.avatar == '' ? 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png' : currentUser.avatar"
             ></el-avatar>
           </span>
-          <el-dropdown-menu slot="dropdown"  >
-            <el-dropdown-item icon="el-icon-plus">个人中心</el-dropdown-item>
+          <el-dropdown-menu slot="dropdown">
+            <router-link to="/userinfo" tag="span">
+              <el-dropdown-item icon="el-icon-plus">个人中心</el-dropdown-item>
+            </router-link>
             <el-dropdown-item icon="el-icon-circle-plus" @click.native="logout">退出登录</el-dropdown-item>
             <el-dropdown-item icon="el-icon-circle-plus-outline">螺蛳粉</el-dropdown-item>
             <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
@@ -39,9 +43,13 @@ export default {
   },
   mounted() {},
   methods: {
+    // userCenter() {
+
+    // },
     logout() {
       console.log('logout')
       localStorage.clear('Authorization')
+      sessionStorage.clear('currentUser')
       this.$router.push('/login')
     }
   },

@@ -1,22 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Film from '@/views/admin/Film'
+import Anime from '@/views/admin/Anime'
+import Tvplay from '@/views/admin/Tvplay'
 import Admin from '@/views/Admin'
 import Login from '@/views/Login'
+import UserInfo from '@/views/UserInfo'
+import VideoPreview from '@/views/VideoPreview'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/admin',
-    component: Admin
+    component: Admin,
+    children: [
+      {
+        path: '/admin/film',
+        component: Film
+      },
+      {
+        path: '/admin/anime',
+        component: Anime
+      },
+      {
+        path: '/admin/tvplay',
+        component: Tvplay
+      }
+    ]
   },
   {
     path: '/login',
     component: Login
   },
   {
+    path: '/userinfo',
+    component: UserInfo
+  },
+  {
+    path: '/videopreview/:id',
+    component: VideoPreview
+  },
+  {
     path: '/',
-    redirect: '/admin'
+    redirect: '/admin/film'
   }
   // {
   //   path: '/about',
@@ -36,13 +63,14 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('Authorization')
+  const user = sessionStorage.getItem('currentUser')
   if (
     to.matched.some(record => record.meta.requireAuth || record.meta.homePages)
   ) {
     // 路由元信息requireAuth:true，或者homePages:true，则不做登录校验
     next()
   } else {
-    if (token) {
+    if (token && user) {
       // 判断用户是否登录
       if (Object.keys(from.query).length === 0) {
         // 判断路由来源是否有query，处理不是目的跳转的情况
