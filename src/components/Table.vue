@@ -51,7 +51,7 @@
           </div>
           <div class="table-row-right">
             <el-button type="warning" icon="el-icon-video-play" circle @click="route2VideoView(data.id)"></el-button>
-            <el-button type="success" icon="el-icon-upload" circle></el-button>
+            <el-button type="success" icon="el-icon-upload" circle  @click="route2VideoUpload(data.id)"></el-button>
             <el-button type="primary" icon="el-icon-edit" circle></el-button>
             <el-button type="danger" icon="el-icon-delete" circle></el-button>
           </div>
@@ -225,8 +225,11 @@ export default {
       this.videoList = []
     },
     route2VideoView(id) {
-      console.log(id)
+      // console.log(id)
       this.$router.push(`/videopreview/${id}`)
+    },
+    route2VideoUpload(id) {
+      this.$router.push(`/admin/videoupload/${id}`)
     }
   },
   mounted() {

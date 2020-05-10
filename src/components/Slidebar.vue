@@ -36,9 +36,9 @@
         </template>
         <el-menu-item-group>
           <template slot="title">视频</template>
-          <el-menu-item index="film">电影</el-menu-item>
-          <el-menu-item index="tvplay">电视剧</el-menu-item>
-          <el-menu-item index="anime">动漫</el-menu-item>
+          <el-menu-item index="/admin/film">电影</el-menu-item>
+          <el-menu-item index="/admin/tvplay">电视剧</el-menu-item>
+          <el-menu-item index="/admin/anime">动漫</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="音频">
           <el-menu-item index="2-3">选项3</el-menu-item>

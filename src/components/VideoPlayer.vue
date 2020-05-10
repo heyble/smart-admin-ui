@@ -5,13 +5,13 @@
       <d-player ref="player" :options="options"></d-player>
     </div>
     <div class="inputbox">
-      <div class="inputbot-left">  126人正在观看</div>
+      <div class="inputbot-left">126人正在观看</div>
       <div class="inputbot-center">
         <el-input v-model="input" placeholder="请输入内容">
           <el-button slot="append" icon="el-icon-s-promotion"></el-button>
         </el-input>
       </div>
-      <div class="inputbot-right">弹幕礼仪  </div>
+      <div class="inputbot-right">弹幕礼仪</div>
     </div>
   </div>
 </template>
@@ -46,7 +46,10 @@ export default {
   watch: {
     videoFile: function(newVal, oldVal) {
       // this.options.video.url = 'http://localhost:3000' + newVal.path
-      this.setVideoUrl('http://localhost:3000' + newVal.path)
+      this.setVideoUrl(
+        'http://localhost:3000/storage/download?filePath=' +
+          newVal.path.replace(/\\/g, '/')
+      )
       // console.log('newVal', newVal)
       // console.log('oldVal', oldVal)
     }
@@ -81,7 +84,6 @@ export default {
 .inputbox-center {
   display: flex;
   flex: 2;
-
 }
 .inputbox-right {
   display: flex;

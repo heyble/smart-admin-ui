@@ -7,6 +7,7 @@ import Admin from '@/views/Admin'
 import Login from '@/views/Login'
 import UserInfo from '@/views/UserInfo'
 import VideoPreview from '@/views/VideoPreview'
+import VideoUpload from '@/views/admin/VideoUpload'
 
 Vue.use(VueRouter)
 
@@ -26,6 +27,10 @@ const routes = [
       {
         path: '/admin/tvplay',
         component: Tvplay
+      },
+      {
+        path: '/admin/videoupload/:id',
+        component: VideoUpload
       }
     ]
   },
