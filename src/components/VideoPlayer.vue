@@ -47,7 +47,7 @@ export default {
     videoFile: function(newVal, oldVal) {
       // this.options.video.url = 'http://localhost:3000' + newVal.path
       this.setVideoUrl(
-        'http://localhost:3000/storage/download?filePath=' +
+        '/smart/storage/download?filePath=' +
           newVal.path.replace(/\\/g, '/')
       )
       // console.log('newVal', newVal)

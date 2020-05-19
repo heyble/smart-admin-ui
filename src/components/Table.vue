@@ -39,7 +39,7 @@
             <div class="row-pic">
               <el-image
                 style="width: 75px; height: 100px"
-                :src="'http://localhost:3000'+data.cover"
+                :src="'/smart/storage/download?filePath='+data.cover.replace(/\\/g, '/')"
               ></el-image>
             </div>
             <div class="row-text">

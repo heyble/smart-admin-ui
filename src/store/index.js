@@ -16,7 +16,7 @@ export default new Vuex.Store({
   },
   actions: {
     loadCurrentUserAction(Store) {
-      axios.get('/user/current').then(res => {
+      axios.get('/smart/user/current').then(res => {
         Store.commit('commitCurrentUser', res.data.data)
       })
     }

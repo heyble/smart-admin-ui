@@ -30,7 +30,7 @@ export default {
     updateVideoInfo() {
       axios({
         method: 'POST',
-        url: '/smartfilm/update',
+        url: '/smart/film/update',
         data: this.videoInfo
       }).then(res => {
         if (res.data.status === 200) {

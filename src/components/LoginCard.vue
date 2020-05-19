@@ -91,7 +91,7 @@ export default {
           console.log(formName)
           axios({
             method: 'POST',
-            url: '/login',
+            url: '/smart/login',
             data: {
               phoneId: this.ruleForm.phoneId,
               password: this.ruleForm.pass

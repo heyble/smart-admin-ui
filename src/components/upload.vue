@@ -54,8 +54,8 @@ export default {
       uploadByPieces({
         files: [this.fileList[this.fileList.length - 1]],
         pieceSize: 5,
-        chunkUrl: 'http://localhost:3000/storage/uploadFile',
-        fileUrl: 'http://localhost:3000/storage/mergeFile',
+        chunkUrl: '/smart/storage/uploadFile',
+        fileUrl: '/smart/storage/mergeFile',
         progress: num => {
           this.loadingText = '上传进度' + num + '%'
         },
